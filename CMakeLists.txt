@@ -1,14 +1,18 @@
-cmake_minimum_required(VERSION 3.21)
+name: Build Geode Mod
 
-project(FramePerfectDetector VERSION 1.0.0)
+on:
+  push:
+  workflow_dispatch:
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+jobs:
+  build:
+    runs-on: windows-latest
 
-file(GLOB_RECURSE SOURCES
-    src/*.cpp
-)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
-
-setup_geode_mod(${PROJECT_NAME})
+      - name: Build
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          target: Win64
