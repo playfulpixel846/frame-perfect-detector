@@ -1,17 +1,14 @@
 cmake_minimum_required(VERSION 3.21)
-project(FramePerfectDetector)
 
-file(GLOB_RECURSE SOURCES src/*.cpp)
-file(GLOB_RECURSE HEADERS src/*.hpp)
+project(FramePerfectDetector VERSION 1.0.0)
 
-add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+file(GLOB_RECURSE SOURCES
+    src/*.cpp
+)
 
-if (NOT DEFINED GEODE_SDK)
-    message(FATAL_ERROR "GEODE_SDK not defined. Make sure to run CMake with -DGEODE_SDK=<path>")
-endif()
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
-
-include(${GEODE_SDK}/cmake/geode.cmake)
+setup_geode_mod(${PROJECT_NAME})
