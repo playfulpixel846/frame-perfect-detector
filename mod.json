@@ -1,0 +1,67 @@
+{
+  "geode": "3.0.0",
+  "version": "1.0.0",
+  "gd": {
+    "win": "2.2.0",
+    "mac": "2.2.0",
+    "android": "2.2.0"
+  },
+  "id": "frame_perfect_detector",
+  "name": "Frame Perfect Detector",
+  "developer": "Anonymous",
+  "description": "Detects frame perfect timings at your chosen FPS threshold with visual and audio feedback.",
+  "settings": {
+    "fps_threshold": {
+      "name": "FPS Threshold",
+      "description": "Minimum FPS threshold for frame perfect detection",
+      "type": "integer",
+      "default": 30,
+      "min": 30,
+      "max": 360
+    },
+    "display_mode": {
+      "name": "Display Mode",
+      "description": "Choose between counter or notification window",
+      "type": "string",
+      "one-of": ["Counter", "Window"],
+      "default": "Counter"
+    },
+    "sound_enabled": {
+      "name": "Sound Enabled",
+      "description": "Play a ding sound when frame perfect is detected",
+      "type": "bool",
+      "default": true
+    },
+    "sound_volume": {
+      "name": "Sound Volume",
+      "description": "Volume for the frame perfect sound (0-100)",
+      "type": "integer",
+      "default": 100,
+      "min": 0,
+      "max": 100
+    },
+    "reset_on_restart": {
+      "name": "Reset Counter on Restart",
+      "description": "Reset the frame perfect counter when you restart the level",
+      "type": "bool",
+      "default": true
+    },
+    "detect_in_practice": {
+      "name": "Detect in Practice Mode",
+      "description": "Enable frame perfect detection in practice mode",
+      "type": "bool",
+      "default": true
+    },
+    "notification_duration": {
+      "name": "Notification Duration (ms)",
+      "description": "How long the window notification displays",
+      "type": "integer",
+      "default": 1500,
+      "min": 500,
+      "max": 5000
+    }
+  },
+  "resources": {
+    "sound": "resources/ding.wav"
+  }
+}
